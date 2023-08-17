@@ -1,0 +1,35 @@
+{
+  "splashTitle": "Нумо шукати гриби разом...",
+  "logInTitle" : "Увійдіть будь ласка\n",
+  "buttonLogIN": "Увійти",
+  "buttonRegistration" : "Реєстація",
+  "registrationTitle": "Створіть обліковий запис.\nВведіть вашу пошту та пароль",
+  "errorTitle": "Сталася проблема.\nПеревірте вашу пошту та пароль",
+  "errorTitleWeakPassword": "Пароль закороткий\n",
+  "errorTitleEmailInUse": "Обліковий запис з такою поштою вже існує\n",
+  "errorTitleNoUser": "Не знайдено користувача з такою поштою\n",
+  "errorTitleWrongPassword": "Невірний пароль для цієї пошти\n",
+  "errorTitleNoInternetConnection": "Перевирте підключення до мережі\n",
+
+  "registrationSuccessTitle": "Реєстрація успішна",
+  "noAccountTitle": "Ще немає облікового запису",
+  "validationSnackBarMessage": "Введіть пошту та пароль",
+  "textFieldHintEmail": "ПОШТА",
+  "textFieldHintPassword": "ПАРОЛЬ",
+
+  "appBarTitle": "Налаштування",
+  "bottomNavigationBarItemLabelSearchFriend": "Пошук друзів",
+  "bottomNavigationBarItemLabelSettings": "Налаштування",
+  "textFieldHintFriendId": "ID друга",
+  "textFieldHintFriendName": "Ім'я друга",
+  "yourIdText": "Ваш ID",
+  "enterYourNameText": "Введіть ваше ім'я",
+  "textFieldHintYourName": "Ім'я",
+  "logOutAlertDialogTitle": "Вийти з облікового запису та закрити застосунок?",
+  "logOutAlertDialogAccept": "ЗГОДЕН",
+  "logOutAlertDialogCancel": "СКАСУВАТИ",
+  "copyIDSnackBarMessage": "Скопійовано",
+  "addFriendButtonTitle": "Додати",
+  "savedNameSnackBarMessage": "Ім'я збережено"
+
+}

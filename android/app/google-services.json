@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "113313621265",
+    "project_id": "mushroom-friends",
+    "storage_bucket": "mushroom-friends.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113313621265:android:ebc23f583ccdd496ead8b0",
+        "android_client_info": {
+          "package_name": "com.cosha.mushroom_friends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113313621265-8j8pgmr6g729mmgilf4il378mjnttojr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl2O7Ck7xX-OGdrBYf-21blqpGdQDFqDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113313621265-8j8pgmr6g729mmgilf4il378mjnttojr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
