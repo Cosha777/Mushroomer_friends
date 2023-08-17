@@ -32,9 +32,6 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {},
-        // ),
         body: Stack(children: [
           GoogleMap(
             polylines: context.watch<MapScreenModel>().polylines,
@@ -64,8 +61,6 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
           ),
-
-          //Text(context.watch<MapLogic>().authUserID!)
         ]),
       ),
     );

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mushroom_friends/generated/l10n.dart';
 
+import 'package:mushroom_friends/generated/l10n.dart';
 import 'package:mushroom_friends/screens/auth_screen/domain/authuser_model.dart';
 
 class FireBaseAuthService {
@@ -22,7 +22,7 @@ class FireBaseAuthService {
         // print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         throw S.current.errorTitleEmailInUse;
-        print('The account already exists for that email.');
+        //print('The account already exists for that email.');
       }
     } catch (e) {
       print(e);
@@ -39,10 +39,10 @@ class FireBaseAuthService {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw S.current.errorTitleNoUser;
-        print('No user found for that email.');
+        //print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         throw S.current.errorTitleWrongPassword;
-        print('Wrong password provided for that user.');
+        //print('Wrong password provided for that user.');
       }
     }
   }

@@ -32,11 +32,11 @@ class MapScreenModel extends ChangeNotifier {
     var myPositionStream = await positionService.getMyPosition();
     myPositionStreamListener = myPositionStream.listen((Position? position) {
       myPosition = position!;
-      addMushroomerToDB(position);
+      addMushroomer(position);
     });
   }
 
-  Future<void> addMushroomerToDB(Position? position) async {
+  Future<void> addMushroomer(Position? position) async {
     var name = await localDataService.getNameFromLocalSource();
     mapFireStoreService.addMushroomerToDB(MushroomerModel(
         id: '0',
@@ -45,8 +45,8 @@ class MapScreenModel extends ChangeNotifier {
   }
 
   void getQueryStream() {
-    var queryFriendList = friendListFactory.listenSettingsStream()!;
-    queryStreamListener = queryFriendList.stream.listen((event) {
+    var queryFriendList = friendListFactory.listenSettingsStream();
+    queryStreamListener = queryFriendList?.stream.listen((event) {
       friendsListListener?.cancel();
       friendList = event;
       createMap();
@@ -62,7 +62,11 @@ class MapScreenModel extends ChangeNotifier {
     });
   }
 
-  void createMarkers(List<MushroomerModel> snapshot) {
+  Future<void> createMarkers(List<MushroomerModel> snapshot) async {
+    final icon = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(),
+      "assets/icons/friend2.png",
+    );
     Set<Marker> markers1 = {};
     for (var element in snapshot) {
       final authUserID = FirebaseAuth.instance.currentUser?.uid;
@@ -74,6 +78,7 @@ class MapScreenModel extends ChangeNotifier {
             position: element.position!,
             infoWindow: InfoWindow(
                 title: element.name, snippet: distance.toInt().toString()),
+            icon: icon,
           ),
         );
       }
