@@ -32,11 +32,11 @@ class MapScreenModel extends ChangeNotifier {
     var myPositionStream = await positionService.getMyPosition();
     myPositionStreamListener = myPositionStream.listen((Position? position) {
       myPosition = position!;
-      addMushroomerToDB(position);
+      addMushroomer(position);
     });
   }
 
-  Future<void> addMushroomerToDB(Position? position) async {
+  Future<void> addMushroomer(Position? position) async {
     var name = await localDataService.getNameFromLocalSource();
     mapFireStoreService.addMushroomerToDB(MushroomerModel(
         id: '0',
@@ -45,8 +45,8 @@ class MapScreenModel extends ChangeNotifier {
   }
 
   void getQueryStream() {
-    var queryFriendList = friendListFactory.listenSettingsStream()!;
-    queryStreamListener = queryFriendList.stream.listen((event) {
+    var queryFriendList = friendListFactory.listenSettingsStream();
+    queryStreamListener = queryFriendList?.stream.listen((event) {
       friendsListListener?.cancel();
       friendList = event;
       createMap();
