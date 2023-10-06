@@ -349,6 +349,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Send this ID to your friends`
+  String get sendIDMessage {
+    return Intl.message(
+      'Send this ID to your friends',
+      name: 'sendIDMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

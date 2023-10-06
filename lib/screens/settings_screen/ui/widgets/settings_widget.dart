@@ -138,6 +138,10 @@ class _IdContainer extends StatelessWidget {
               FirebaseAuth.instance.currentUser?.uid ?? "ID",
               style: Theme.of(context).textTheme.displayMedium,
             ),
+            Text(
+              S.of(context).sendIDMessage,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
           ],
         ),
       ),

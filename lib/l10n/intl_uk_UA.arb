@@ -30,6 +30,7 @@
   "logOutAlertDialogCancel": "СКАСУВАТИ",
   "copyIDSnackBarMessage": "Скопійовано",
   "addFriendButtonTitle": "Додати",
-  "savedNameSnackBarMessage": "Ім'я збережено"
+  "savedNameSnackBarMessage": "Ім'я збережено",
+  "sendIDMessage": "Відправте цей ID своїм друзям"
 
 }

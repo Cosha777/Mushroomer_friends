@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -10,14 +9,24 @@ import 'package:mushroom_friends/screens/map_screen/data/position_service.dart';
 import 'package:mushroom_friends/screens/settings_screen/data/friend_list_factory.dart';
 import 'package:mushroom_friends/screens/settings_screen/data/local_data_source.dart';
 
+import '../domain/markers_model.dart';
+import '../domain/polylines_model.dart';
+
 class MapScreenModel extends ChangeNotifier {
-  MapScreenModel(this.mapFireStoreService, this.localDataService,
-      this.friendListFactory, this.positionService);
+  MapScreenModel(
+      this.mapFireStoreService,
+      this.localDataService,
+      this.friendListFactory,
+      this.positionService,
+      this.markersModel,
+      this.polylinesModel);
 
   final MapFireStoreService mapFireStoreService;
   final LocalDataService localDataService;
   final FriendListFactory friendListFactory;
   final PositionService positionService;
+  final MarkersModel markersModel;
+  final PolylinesModel polylinesModel;
 
   Position? myPosition;
   Set<Marker> markers = {};
@@ -55,60 +64,11 @@ class MapScreenModel extends ChangeNotifier {
 
   void createMap() {
     var friendListStream = mapFireStoreService.getDataFromDB(friendList);
-    friendsListListener = friendListStream.listen((event) {
-      createMarkers(event);
-      createPolylines(event);
+    friendsListListener = friendListStream.listen((event) async {
+      markers = await markersModel.createMarkers(event, myPosition);
+      polylines = polylinesModel.createPolylines(event, myPosition);
       notifyListeners();
     });
-  }
-
-  Future<void> createMarkers(List<MushroomerModel> snapshot) async {
-    final icon = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(),
-      "assets/icons/friend2.png",
-    );
-    Set<Marker> markers1 = {};
-    for (var element in snapshot) {
-      final authUserID = FirebaseAuth.instance.currentUser?.uid;
-      if (element.id != authUserID) {
-        final distance = distanceCalc(element);
-        markers1.add(
-          Marker(
-            markerId: MarkerId(element.id!),
-            position: element.position!,
-            infoWindow: InfoWindow(
-                title: element.name, snippet: distance.toInt().toString()),
-            icon: icon,
-          ),
-        );
-      }
-    }
-    markers = markers1;
-  }
-
-  void createPolylines(List<MushroomerModel> snapshot) {
-    Set<Polyline> polylines1 = {};
-    for (var element in snapshot) {
-      polylines1.add(Polyline(
-        polylineId: PolylineId(element.id!),
-        visible: true,
-        width: 2,
-        points: [
-          LatLng(myPosition!.latitude, myPosition!.longitude), //start point
-          element.position!, //end point
-        ],
-        color: Colors.deepPurpleAccent,
-      ));
-    }
-    polylines = polylines1;
-  }
-
-  double distanceCalc(MushroomerModel element) {
-    return Geolocator.distanceBetween(
-        element.position!.latitude,
-        element.position!.longitude,
-        myPosition!.latitude,
-        myPosition!.longitude);
   }
 
   Future<void> cancel() async {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mushroom_friends/screens/map_screen/domain/markers_model.dart';
+import 'package:mushroom_friends/screens/map_screen/domain/polylines_model.dart';
 import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,6 +19,7 @@ import 'package:mushroom_friends/screens/map_screen/data/position_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Firebase.initializeApp();
   await Permission.locationWhenInUse.request();
   runApp(const MyApp());
@@ -36,6 +40,8 @@ class MyApp extends StatelessWidget {
               SettingsFireStoreService(),
             ),
             PositionService(),
+            MarkersModel(),
+            PolylinesModel(),
           ),
         ),
       ],

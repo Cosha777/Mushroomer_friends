@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Створіть обліковий запис.\nВведіть вашу пошту та пароль"),
         "savedNameSnackBarMessage":
             MessageLookupByLibrary.simpleMessage("Ім\'я збережено"),
+        "sendIDMessage": MessageLookupByLibrary.simpleMessage(
+            "Відправте цей ID своїм друзям"),
         "splashTitle":
             MessageLookupByLibrary.simpleMessage("Нумо шукати гриби разом..."),
         "textFieldHintEmail": MessageLookupByLibrary.simpleMessage("ПОШТА"),

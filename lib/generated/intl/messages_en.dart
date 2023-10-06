@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Create account.\nEnter your email and password"),
         "savedNameSnackBarMessage":
             MessageLookupByLibrary.simpleMessage("Name saved"),
+        "sendIDMessage": MessageLookupByLibrary.simpleMessage(
+            "Send this ID to your friends"),
         "splashTitle": MessageLookupByLibrary.simpleMessage(
             "Let\'s look for mushrooms together..."),
         "textFieldHintEmail": MessageLookupByLibrary.simpleMessage("EMAIL"),

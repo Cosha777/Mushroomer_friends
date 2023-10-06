@@ -194,8 +194,7 @@ class _FriendList extends StatelessWidget {
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                       subtitle: Text(state.friendList[index].id,
-                          style: const TextStyle(
-                              color: Colors.white54, fontSize: 11),
+                          style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis),
                       leading: Checkbox(
                         value: state.friendList[index].isShowed ? true : false,

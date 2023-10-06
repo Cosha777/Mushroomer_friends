@@ -29,5 +29,6 @@
   "logOutAlertDialogCancel": "CANCEL",
   "copyIDSnackBarMessage": "Copied to your clipboard",
   "addFriendButtonTitle": "ADD",
-  "savedNameSnackBarMessage": "Name saved"
+  "savedNameSnackBarMessage": "Name saved",
+  "sendIDMessage": "Send this ID to your friends"
 }
