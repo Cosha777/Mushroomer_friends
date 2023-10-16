@@ -44,19 +44,23 @@ class _MapScreenState extends State<MapScreen> {
               zoom: 16,
             ),
           ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/settingsScreen');
-            },
-            icon: const Icon(
-              Icons.menu_rounded,
-            ),
-            color: Colors.black38,
-            style: const ButtonStyle(
-              side: MaterialStatePropertyAll(
-                BorderSide(
-                  color: Colors.blue,
-                  width: 3,
+          Positioned(
+            top: 50,
+            left: 7,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/settingsScreen');
+              },
+              icon: const Icon(
+                Icons.menu_rounded,
+              ),
+              color: Colors.black38,
+              style: const ButtonStyle(
+                side: MaterialStatePropertyAll(
+                  BorderSide(
+                    color: Colors.blue,
+                    width: 3,
+                  ),
                 ),
               ),
             ),
