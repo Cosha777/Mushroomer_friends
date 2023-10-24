@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addFriendButtonTitle": MessageLookupByLibrary.simpleMessage("Додати"),
+        "alertDialogAccept": MessageLookupByLibrary.simpleMessage("ЗГОДЕН"),
+        "alertDialogCancel": MessageLookupByLibrary.simpleMessage("СКАСУВАТИ"),
         "appBarTitle": MessageLookupByLibrary.simpleMessage("Налаштування"),
         "bottomNavigationBarItemLabelSearchFriend":
             MessageLookupByLibrary.simpleMessage("Пошук друзів"),
@@ -32,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "buttonRegistration": MessageLookupByLibrary.simpleMessage("Реєстація"),
         "copyIDSnackBarMessage":
             MessageLookupByLibrary.simpleMessage("Скопійовано"),
+        "deleteFriendDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Видалити друга?"),
         "enterYourNameText":
             MessageLookupByLibrary.simpleMessage("Введіть ваше ім\'я"),
         "errorTitle": MessageLookupByLibrary.simpleMessage(
@@ -48,10 +52,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Невірний пароль для цієї пошти\n"),
         "logInTitle":
             MessageLookupByLibrary.simpleMessage("Увійдіть будь ласка\n"),
-        "logOutAlertDialogAccept":
-            MessageLookupByLibrary.simpleMessage("ЗГОДЕН"),
-        "logOutAlertDialogCancel":
-            MessageLookupByLibrary.simpleMessage("СКАСУВАТИ"),
         "logOutAlertDialogTitle": MessageLookupByLibrary.simpleMessage(
             "Вийти з облікового запису та закрити застосунок?"),
         "noAccountTitle":
@@ -74,7 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "textFieldHintPassword": MessageLookupByLibrary.simpleMessage("ПАРОЛЬ"),
         "textFieldHintYourName": MessageLookupByLibrary.simpleMessage("Ім\'я"),
         "validationSnackBarMessage":
-            MessageLookupByLibrary.simpleMessage("Введіть пошту та пароль"),
+            MessageLookupByLibrary.simpleMessage("Заповніть поля"),
         "yourIdText": MessageLookupByLibrary.simpleMessage("Ваш ID")
       };
 }

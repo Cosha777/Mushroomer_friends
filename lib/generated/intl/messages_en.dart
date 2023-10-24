@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addFriendButtonTitle": MessageLookupByLibrary.simpleMessage("ADD"),
+        "alertDialogAccept": MessageLookupByLibrary.simpleMessage("ACCEPT"),
+        "alertDialogCancel": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "appBarTitle": MessageLookupByLibrary.simpleMessage("Settings"),
         "bottomNavigationBarItemLabelSearchFriend":
             MessageLookupByLibrary.simpleMessage("Search friend"),
@@ -33,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Registration"),
         "copyIDSnackBarMessage":
             MessageLookupByLibrary.simpleMessage("Copied to your clipboard"),
+        "deleteFriendDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Delete friend?"),
         "enterYourNameText":
             MessageLookupByLibrary.simpleMessage("Enter your Name"),
         "errorTitle": MessageLookupByLibrary.simpleMessage(
@@ -48,10 +52,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorTitleWrongPassword": MessageLookupByLibrary.simpleMessage(
             "Wrong password provided for that user\n"),
         "logInTitle": MessageLookupByLibrary.simpleMessage("Login please...\n"),
-        "logOutAlertDialogAccept":
-            MessageLookupByLibrary.simpleMessage("ACCEPT"),
-        "logOutAlertDialogCancel":
-            MessageLookupByLibrary.simpleMessage("CANCEL"),
         "logOutAlertDialogTitle":
             MessageLookupByLibrary.simpleMessage("LogOut and close App?"),
         "noAccountTitle":
@@ -75,7 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("PASSWORD"),
         "textFieldHintYourName": MessageLookupByLibrary.simpleMessage("Name"),
         "validationSnackBarMessage":
-            MessageLookupByLibrary.simpleMessage("Enter email/password"),
+            MessageLookupByLibrary.simpleMessage("Fill in the fields "),
         "yourIdText": MessageLookupByLibrary.simpleMessage("Your ID")
       };
 }

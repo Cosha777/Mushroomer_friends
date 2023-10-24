@@ -79,16 +79,16 @@ class _AuthScreenState extends State<AuthScreen> {
           elevation: MaterialStateProperty.all(10),
         ),
         onPressed: () {
-          if (_emailController.text.isNotEmpty ||
-              _passwordController.text.isNotEmpty) {
+          if (_emailController.text.isEmpty ||
+              _passwordController.text.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                duration: const Duration(milliseconds: 1500),
+                content: Text(S.of(context).validationSnackBarMessage)));
+          } else {
             context.read<AuthScreenBloc>().add(OnAuthButtonClick(
                 context: context,
                 email: _emailController.text.trim(),
                 password: _passwordController.text.trim()));
-          } else {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                duration: const Duration(milliseconds: 1500),
-                content: Text(S.of(context).validationSnackBarMessage)));
           }
         },
         child: Text(context.watch<AuthScreenBloc>().state.buttonTitle),

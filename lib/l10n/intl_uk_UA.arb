@@ -13,7 +13,7 @@
 
   "registrationSuccessTitle": "Реєстрація успішна",
   "noAccountTitle": "Ще немає облікового запису",
-  "validationSnackBarMessage": "Введіть пошту та пароль",
+  "validationSnackBarMessage": "Заповніть поля",
   "textFieldHintEmail": "ПОШТА",
   "textFieldHintPassword": "ПАРОЛЬ",
 
@@ -26,8 +26,9 @@
   "enterYourNameText": "Введіть ваше ім'я",
   "textFieldHintYourName": "Ім'я",
   "logOutAlertDialogTitle": "Вийти з облікового запису та закрити застосунок?",
-  "logOutAlertDialogAccept": "ЗГОДЕН",
-  "logOutAlertDialogCancel": "СКАСУВАТИ",
+  "deleteFriendDialogTitle": "Видалити друга?",
+  "alertDialogAccept": "ЗГОДЕН",
+  "alertDialogCancel": "СКАСУВАТИ",
   "copyIDSnackBarMessage": "Скопійовано",
   "addFriendButtonTitle": "Додати",
   "savedNameSnackBarMessage": "Ім'я збережено",

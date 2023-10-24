@@ -180,10 +180,10 @@ class S {
     );
   }
 
-  /// `Enter email/password`
+  /// `Fill in the fields `
   String get validationSnackBarMessage {
     return Intl.message(
-      'Enter email/password',
+      'Fill in the fields ',
       name: 'validationSnackBarMessage',
       desc: '',
       args: [],
@@ -300,21 +300,31 @@ class S {
     );
   }
 
+  /// `Delete friend?`
+  String get deleteFriendDialogTitle {
+    return Intl.message(
+      'Delete friend?',
+      name: 'deleteFriendDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `ACCEPT`
-  String get logOutAlertDialogAccept {
+  String get alertDialogAccept {
     return Intl.message(
       'ACCEPT',
-      name: 'logOutAlertDialogAccept',
+      name: 'alertDialogAccept',
       desc: '',
       args: [],
     );
   }
 
   /// `CANCEL`
-  String get logOutAlertDialogCancel {
+  String get alertDialogCancel {
     return Intl.message(
       'CANCEL',
-      name: 'logOutAlertDialogCancel',
+      name: 'alertDialogCancel',
       desc: '',
       args: [],
     );

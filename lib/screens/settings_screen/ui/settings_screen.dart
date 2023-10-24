@@ -8,6 +8,7 @@ import 'package:mushroom_friends/screens/settings_screen/ui/bloc/settings_screen
 import 'package:mushroom_friends/screens/settings_screen/ui/widgets/search_friends_widget.dart';
 import 'package:mushroom_friends/screens/settings_screen/ui/widgets/settings_widget.dart';
 import 'package:mushroom_friends/generated/l10n.dart';
+import 'package:mushroom_friends/widgets/alert_dialog.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -73,44 +74,17 @@ class _LogOutButton extends StatelessWidget {
         showDialog(
             context: context,
             builder: (context) {
-              return _DialogWidget(bloc: bloc);
+              return DialogWidget(
+                  title: S.of(context).logOutAlertDialogTitle,
+                  fun: () {
+                    bloc.add(LogOutAcceptClick());
+                  });
             });
       },
       icon: const Icon(
         Icons.logout_sharp,
         color: Colors.white,
       ),
-    );
-  }
-}
-
-class _DialogWidget extends StatelessWidget {
-  const _DialogWidget({super.key, required this.bloc});
-
-  final SettingsScreenBloc bloc;
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text(
-        S.of(context).logOutAlertDialogTitle,
-        textAlign: TextAlign.center,
-      ),
-      actionsAlignment: MainAxisAlignment.spaceBetween,
-      actions: [
-        TextButton(
-            onPressed: () {
-              bloc.add(LogOutAcceptClick());
-            },
-            child: Text(S.of(context).logOutAlertDialogAccept,
-                style: const TextStyle(color: Colors.blue))),
-        TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(S.of(context).logOutAlertDialogCancel,
-                style: const TextStyle(color: Colors.redAccent))),
-      ],
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mushroom_friends/screens/settings_screen/domain/friend_model.dart';
 import 'package:mushroom_friends/screens/settings_screen/ui/bloc/settings_screen_bloc.dart';
 import 'package:mushroom_friends/generated/l10n.dart';
+import 'package:mushroom_friends/widgets/alert_dialog.dart';
 
 class SearchFriendWidget extends StatelessWidget {
   const SearchFriendWidget({super.key});
@@ -101,13 +102,20 @@ class _NameTextField extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              context.read<SettingsScreenBloc>().add(AddFriendToFriendList(
-                  friendModel: FriendModel(
-                      id: _iDController.text,
-                      name: _nameController.text,
-                      isShowed: true)));
-              _iDController.clear();
-              _nameController.clear();
+              if (_iDController.text.isEmpty || _nameController.text.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    duration: const Duration(milliseconds: 1500),
+                    content: Text(S.of(context).validationSnackBarMessage)));
+              } else {
+                context.read<SettingsScreenBloc>().add(AddFriendToFriendList(
+                      friendModel: FriendModel(
+                          id: _iDController.text,
+                          name: _nameController.text,
+                          isShowed: true),
+                    ));
+                _iDController.clear();
+                _nameController.clear();
+              }
             },
             child: Text(S.of(context).addFriendButtonTitle),
           ),
@@ -182,29 +190,42 @@ class _FriendList extends StatelessWidget {
               return ListView.separated(
                 itemCount: state.friendList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Dismissible(
-                    onDismissed: (direction) {
-                      bloc.add(DeleteFriendFromFriendList(
-                          id: state.friendList[index].id));
-                    },
-                    key: UniqueKey(),
-                    child: ListTile(
-                      title: Text(
-                        state.friendList[index].name,
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
-                      subtitle: Text(state.friendList[index].id,
-                          style: Theme.of(context).textTheme.titleSmall,
-                          overflow: TextOverflow.ellipsis),
-                      leading: Checkbox(
-                        value: state.friendList[index].isShowed ? true : false,
-                        onChanged: (bool? value) {
-                          bloc.add(CheckboxClick(index: index));
-                        },
-                        checkColor: Colors.white,
-                        activeColor: Colors.blue,
-                      ),
+                  return ListTile(
+                    title: Text(
+                      state.friendList[index].name,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
+                    subtitle: Text(state.friendList[index].id,
+                        style: Theme.of(context).textTheme.titleSmall,
+                        overflow: TextOverflow.ellipsis),
+                    leading: Checkbox(
+                      value: state.friendList[index].isShowed ? true : false,
+                      onChanged: (bool? value) {
+                        bloc.add(CheckboxClick(index: index));
+                      },
+                      checkColor: Colors.white,
+                      activeColor: Colors.blue,
+                    ),
+                    trailing: IconButton(
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return DialogWidget(
+                                  title: S.of(context).deleteFriendDialogTitle,
+                                  fun: () {
+                                    bloc.add(DeleteFriendFromFriendList(
+                                        id: state.friendList[index].id));
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              });
+                        },
+                        icon: const Icon(
+                          Icons.delete_forever,
+                          color: Colors.grey,
+                          size: 18,
+                        )),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
